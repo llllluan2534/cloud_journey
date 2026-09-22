@@ -1,0 +1,24 @@
+{
+  "memories": [
+    {
+      "id": 1,
+      "title": "LẦN GẶP ĐẦU TIÊN",
+      "date": "30/11/2024",
+      "description": "Địa điểm: Chicken Plus - Nguyễn Thị Thập Q7",
+      "fullStory": "Chúng ta lần đầu gặp nhau vào một buổi chiều đầy nắng...",
+      "x": 20,
+      "y": 30,
+      "layer": "middle"
+    },
+    {
+      "id": 2,
+      "title": "LẦN GẶP THỨ 2",
+      "date": "28/12/2024",
+      "description": "Đường Phạm Hùng, Q9",
+      "fullStory": "Cậu cười, tớ đỏ mặt. Chúng ta nhìn nhau thật lâu rồi cùng thốt lên lời yêu.",
+      "x": 70,
+      "y": 50,
+      "layer": "foreground"
+    }
+  ]
+}
