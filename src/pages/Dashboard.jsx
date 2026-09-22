@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { 
-  FaExternalLinkAlt, 
-  FaExchangeAlt, 
-  FaCloud, 
-  FaImages, 
-  FaMapMarkedAlt, 
+import {
+  FaExternalLinkAlt,
+  FaExchangeAlt,
+  FaCloud,
+  FaImages,
+  FaMapMarkedAlt,
   FaMapPin
 } from "react-icons/fa";
 import { supabaseService } from "../utils/supabaseService";
@@ -314,16 +314,19 @@ export default function Dashboard() {
   const widgetConfig = {
     timeline: {
       label: "Đám Mây Kỷ Niệm",
+      shortLabel: "Mây",
       path: "/timeline",
       renderPrimary: () => <CloudMemory isEmbedded={true} />,
     },
     gallery: {
       label: "Thư Viện Thời Gian",
+      shortLabel: "Thư Viện",
       path: "/gallery",
       renderPrimary: () => <Gallery isEmbedded={true} />,
     },
     bucket: {
       label: "Bản Đồ Mơ Ước",
+      shortLabel: "Mơ",
       path: "/bucket-list",
       renderPrimary: () => <BucketList isEmbedded={true} />,
     },
@@ -360,20 +363,20 @@ export default function Dashboard() {
   return (
     <div className="w-full max-w-7xl mx-auto px-2 md:px-4">
       {/* Mobile Tab Switcher */}
-      <div className="flex md:hidden items-center justify-center gap-2 mb-6 p-1.5 bg-white/80 backdrop-blur-md rounded-2xl border border-stone-200/80 shadow-sm">
+      <div className="grid grid-cols-3 md:hidden gap-1.5 mb-5 p-1 bg-white/85 backdrop-blur-md rounded-2xl border border-stone-200/80 shadow-sm w-full max-w-lg mx-auto">
         {allKeys.map((key) => {
           const active = primary === key;
           return (
             <button
               key={key}
               onClick={() => setPrimary(key)}
-              className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
-                active
-                  ? "bg-[#39332c] text-white shadow-xs"
-                  : "text-stone-500 hover:text-stone-800"
-              }`}
+              className={`py-2 px-1 text-xs font-bold rounded-xl transition-all text-center flex items-center justify-center ${active
+                ? "bg-[#39332c] text-white shadow-xs"
+                : "text-stone-500 hover:text-stone-800"
+                }`}
             >
-              {widgetConfig[key].label}
+              <span className="sm:hidden">{widgetConfig[key].shortLabel}</span>
+              <span className="hidden sm:inline">{widgetConfig[key].label}</span>
             </button>
           );
         })}
@@ -388,24 +391,24 @@ export default function Dashboard() {
           className="lg:col-span-7 bg-white rounded-[2.5rem] shadow-lg border border-stone-200/80 overflow-hidden flex flex-col h-[680px] relative"
         >
           {/* Top Bar for Primary View */}
-          <div className="px-6 py-3.5 bg-white/95 backdrop-blur-md border-b border-stone-100 flex items-center justify-between z-20 shrink-0">
-            <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#39332c]" />
-              <span className="text-xs font-black uppercase tracking-wider text-[#39332c]">
+          <div className="px-3 sm:px-6 py-2.5 sm:py-3.5 bg-white/95 backdrop-blur-md border-b border-stone-100 flex items-center justify-between z-20 shrink-0 gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#39332c] shrink-0" />
+              <span className="text-[10.5px] sm:text-xs font-black uppercase tracking-tight sm:tracking-wider text-[#39332c] whitespace-nowrap">
                 {widgetConfig[primary].label}
               </span>
-              <span className="text-[10px] bg-stone-100 text-stone-600 px-2.5 py-0.5 rounded-full font-bold">
+              <span className="text-[9px] sm:text-[10px] bg-stone-100 text-stone-600 px-2 py-0.5 rounded-full font-bold shrink-0 whitespace-nowrap">
                 Khung chính
               </span>
             </div>
 
             <Link
               to={widgetConfig[primary].path}
-              className="flex items-center gap-1.5 text-xs font-bold text-[#39332c] hover:bg-[#39332c] hover:text-white px-3.5 py-1.5 rounded-full border border-stone-200 transition-all shadow-2xs"
+              className="flex items-center gap-1 text-[10px] sm:text-xs font-bold text-[#39332c] hover:bg-[#39332c] hover:text-white px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-stone-200 transition-all shadow-2xs shrink-0 whitespace-nowrap"
               title="Mở toàn màn hình"
             >
               <span>Xem toàn màn hình</span>
-              <FaExternalLinkAlt size={10} />
+              <FaExternalLinkAlt size={9} />
             </Link>
           </div>
 
